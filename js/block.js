@@ -35,31 +35,31 @@
         {
             return false;
         }
-    }
+    };
 
     
     var Block = function(width, height, color)
     {
         this.width = width;
         this.height = height;
-        this.color = color
+        this.color = color;
         
         this.set_color = function(color)
         {
             this.color = color;
-        }
+        };
     
-    }
+    };
     
     var stage = function(context, config)
     {
         var block_width = config.canvas_width / 3;
         var block_height = config.canvas_height / 3;
         
-        var block1 = new Block(block_width, block_height, 'black');
+        var block1 = new Block(block_width, block_height, 0);
         console.log(block1);
 
-    }
+    };
 
     BLOCK.init = function(config)
     {
@@ -68,7 +68,7 @@
         {
             return init(config);
         }
-    }
+    };
 
     
 })(window);
