@@ -10,10 +10,13 @@
         var config = {};
         
         config.canvas = 'stage';
-        config.canvas_width  = 600;
-        config.canvas_height = 800;
+        config.canvas_width  = 240;
+        config.canvas_height = 320;
+        config.row = 4;
+        config.col = 3;
+        config.level = 100;
 
-        var block = BLOCK.init(config);
-        console.log(block);
+        var gamer = BLOCK.init(config);
+        console.log(gamer);
     }
 })(window);
