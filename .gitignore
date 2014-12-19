@@ -5,3 +5,7 @@
 temp
 node_modules
 dist
+.idea
+components
+bower_components
+.DS_Store

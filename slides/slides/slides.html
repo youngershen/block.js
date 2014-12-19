@@ -1,0 +1,192 @@
+<div class="slide-layout-title">
+	<h1>技术分享</h1>
+	<h2>28分钟200行js代码急速打造 <别踩白块> html5版</h2>
+
+</div>
+<hr>
+<div>
+	<h1>canvas</h1>
+	<p>
+	
+		标签:&lt;canvas id="myCanvas" width="200" height="100"&gt;&lt;/canvas&gt;
+		</br>
+		</br>
+		核心对象 :  <a href="http://www.w3school.com.cn/jsref/dom_obj_canvasrenderingcontext2d.asp">CanvasRenderingContext2D</a>
+		</br>
+		</br>
+		获取对象:
+		</br>
+		var c=document.getElementById("myCanvas");
+		var cxt=c.getContext("2d");
+	</p>
+</div>
+<hr>
+<div>
+	<h1>使用到的API</h1>
+	<p>
+		CanvasRenderingContext2D 对象的属性
+		</br>
+		</br>
+		
+		fillStyle 属性:
+		</br>
+		</br>
+		用来填充路径的当前的颜色、模式或渐变。这个属性可以设置为一个字符串或者一个 CanvasGradient 对象 或 CanvasPattern 对象。当设置为一个字符串时，它被解析为一个 CSS 颜色值并且用来进行实心填充。当设置为一个 CanvasGradient 或 CanvasPattern 对象，通过使用指定的渐变或模式来完成填充。
+		</br>
+		</br>
+		
+	</p>
+</div>
+<hr>
+<div>
+	<h1>使用到的API</h1>
+	<p>
+		<a href="http://www.w3school.com.cn/jsref/met_canvasrenderingcontext2d_fillrect.asp">fillRect()</a> 方法填充一个矩形。
+		</br>
+		</br>
+			fillRect(x, y, width, height)
+			</br>
+			</br>		
+			x, y 	矩形的左上角的坐标。
+			</br>
+			</br>			
+			width, height 	矩形的大小。	
+	</p>
+</div>
+<hr>
+<div>
+	<h1>使用到的API</h1>
+	<p>
+		<a href="http://www.w3school.com.cn/jsref/met_canvasrenderingcontext2d_clearrect.asp">clearRect() </a>删除一个画布的矩形区域。
+		</br>
+		</br>
+		clearRect(x, y, width, height)
+		</br>
+		</br>
+		x, y 	矩形的左上角的坐标。
+		</br>
+		</br>
+		width, height 	矩形的尺寸。
+	</p>
+</div>
+<hr>
+<div class="slide-layout-title">
+	<h1>制作思路</h1>
+	<p>
+		<ol>
+			<li>数据结构</li>
+			<li>事件管理</li>
+			<li>游戏循环(动画， 状态机， etc.....)</li>
+		</ol>
+	</p>
+</div>
+<hr>
+<div class="slide-layout-title">
+	<h1>数据结构</h1>
+	<p>
+		Block 
+		</br>
+		</br>
+		属性 : width , height, color, position
+		</br>
+		</br>
+		方法: check_click(event), set_color(color), set_position(position)	
+</p>
+</div>
+<hr>
+<div>
+	<h1>数据结构</h1>
+	<p>
+		Stage
+		</br>
+		</br>
+		属性:canvas, context, config, block_buffer
+		</br>
+		</br>	
+		构造方法:
+		</br>
+		</br>
+		&nbsp&nbsp Stage(canvas, context, config)
+		</br>
+		</br>
+		公有方法:
+		&nbsp&nbsp 	init();
+		</br>
+		</br>
+		私有方法:
+		</br>
+		</br>
+		&nbsp &nbsp init_block(block_width, block_height, row, col)
+		</br>
+		</br>
+		&nbsp &nbsp fill_canvas(context, buffer)
+		</br>
+		</br>
+		&nbsp &nbsp roll_block(context, buffer)
+		</br>
+		</br>
+		&nbsp &nbsp gameloop(context, config, buffer)
+
+
+	</p>
+</div>
+<hr>
+<div>
+	<h1>事件管理</h1>
+	<p>
+		 
+        Block.canvas.onclick = function(event){...}
+		  </br>
+		  </br>
+		    BLock.canvas.check_click = function(event){...}
+	</p>
+</div>
+<hr>
+<div>
+	<h1>游戏循环</h1>
+	<p>
+		Stage.roll_block = function(context, buffer){...}
+		</br>
+		</br>
+		Stage.gameloop = function(context, config, buffer)	{...}
+		<br>
+		</br>
+		<pre>
+	var loop = function()
+        {
+           context.clearRect(0, 0, config.canvas_width, config.canvas_height);
+           roll_block(context, buffer);
+           fill_canvas(context, buffer);
+         };
+
+        setInterval(loop, 1000/60);
+		</pre>
+	</p>
+</div>
+<hr>
+<div>
+	<h1>思考</h1>
+	<p>
+		<ul>
+			<li>如何写好js代码呢？</li>
+		</ul>
+	</p>
+</div>
+<hr>
+<div>
+	<h1>辅助工具</h1>
+
+	<ul>
+		<li>grunt jshint</li>
+		<li>use strict</li>
+	</ul>
+</div>
+<hr>
+<div>
+	<h1>提问环节</h1>
+</div>
+<hr>
+<div class="slide-layout-title">
+	<h1>Get it</h1>
+	<h2>Now available on <a href="https://github.com/youngershen/block.js">github</a></h2>
+</div>
