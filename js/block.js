@@ -52,7 +52,6 @@
 
         this.check_click = function(event)
         {
-            //alert('click');
             var x = event.clientX;
             var y = event.clientY;
 
@@ -61,7 +60,6 @@
             
             if(x > this.location.x && x < area_x && y > this.location.y && y < area_y)
             {
-                //hit
                 if(this.color==='#000000')
                 {
                     SCORE += 1;
@@ -69,7 +67,7 @@
                 this.color = '#ffffff';
                 console.log("score:" + SCORE);
             }
-        }
+        };
 
         this.set_color = function(color)
         {
@@ -78,7 +76,7 @@
         this.set_location = function(location)
         {   
             that.location = location;
-        }
+        };
     
     };
     
@@ -109,7 +107,7 @@
                     block.check_click(event);
                 }
             }
-        }        
+        };        
         var init_block = function(block_with, block_height, row, col)
         {
             var block_buffer = [];
@@ -117,18 +115,15 @@
             for(var i = 0; i < that.config.level; i++)
             {
                 var temp_block_buffer = [];
-                
+                var color = '#000000';
+
                 for(var n = 0; n < col; n++)
                 {   
                     var rand  = parseInt((Math.random() * 100) ) % 3;
 
-                    if(rand > 0)
+                    if(rand > 1)
                     {
-                        var color = '#ffffff';
-                    }
-                    else
-                    {
-                        var color = '#000000';
+                        color = '#ffffff';
                     }
                     var block = new Block(block_width, block_height, color, {x:n*block_width, y:i*block_height});
                     temp_block_buffer.push(block);
@@ -137,7 +132,7 @@
                 block_buffer.push(temp_block_buffer);
             }
             return block_buffer;
-        }
+        };
         
         var fill_canvas = function(context, buffer)
         {
@@ -151,7 +146,7 @@
                     context.fillRect(block.location.x, block.location.y, block.width, block.height); 
                 }
             }
-        }
+        };
 
         var roll_block = function(context, buffer)
         {
@@ -163,29 +158,27 @@
                     block.location.y -= 1;
                 }
             }
-        }
+        };
        
         var gameloop = function(context, config, buffer)
         {
             var loop = function()
             {
-                //event_flush(buffer, config);
                 context.clearRect(0, 0, config.canvas_width, config.canvas_height);
                 roll_block(context, buffer);
-                fill_canvas(context, buffer)
-            }
+                fill_canvas(context, buffer);
+            };
 
-            setInterval(loop, 1000/60)
-        }
+            setInterval(loop, 1000/60);
+        };
 
         this.init = function()
         {
 
             this.block_buffer = init_block(block_width, block_height, this.config.row, this.config.col);
-            //console.log(this.block_buffer);
             fill_canvas(this.context, this.block_buffer);
             gameloop(this.context, this.config, this.block_buffer);
-        }
+        };
     };
 
     BLOCK.init = function(config)
@@ -197,5 +190,4 @@
         }
     };
 
-    
 })(window);
