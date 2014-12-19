@@ -91,7 +91,7 @@
         var block_height = this.config.canvas_height /  this.config.col;
         var block_count  = this.config.row * this.config.col;
         
-        //问题一 为什么这里这样写呢？
+        // Q&A: 为什么这里这样写呢？
         var that = this;
         
         this.canvas.onclick = function(event)
