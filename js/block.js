@@ -10,6 +10,7 @@
 
     var BLOCK = {};
     var SCORE = 0;
+    
     if(!window.BLOCK)
     {
        window.BLOCK = BLOCK; 
